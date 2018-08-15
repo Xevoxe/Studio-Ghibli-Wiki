@@ -4,7 +4,7 @@ import Films from './Container/Films';
 
 class App extends Component{
     render(){
-        return <Films />
+        return <div className="container"><Films /></div>
     }
 }
 export default App;

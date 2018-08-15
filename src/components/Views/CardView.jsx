@@ -1,10 +1,10 @@
 import React from 'react';
 
 let CardView = (props)=>{
-    console.log(props.children);
     return (
-        <div className={props.isHidden ? "hidden" : "card"}>
-            <h5 className="card-title">Synopsis</h5>
+        <div className="col data-tabs">
+            <h2 className="card-title">Synopsis</h2>
+            <hr class="my-6"/>
             <p className="card-text">{props.synopsis}</p>
         </div>
     )

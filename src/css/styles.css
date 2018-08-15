@@ -1,3 +1,81 @@
+body {
+    font-family: 'Spectral', serif;
+    font-size: 16pt;
+    background-color: rgb(95, 74, 19);
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.header{
+    text-align: center;
+    padding:10px;
+}
+
+.header img {
+    margin-bottom: 20px;
+}
+
+.fixed {
+   z-index: 10;
+}
+
+/*Data Display*/
+.fields-row {
+    text-align: center;
+    background: rgb(0, 0, 0);
+    color: white;
+    padding-top: 10px;
+}
+
+.data-cells {
+    padding-top: 15px;
+    text-align: center;  
+}
+
+.data-tabs {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.even {
+    background: rgb(249, 253, 255);
+}
+.odd {
+    background: rgb(255, 195, 190);
+}
+
 .hidden {
     display: none;
+}
+
+.fade-down{
+    animation-name: down;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.slide-up {
+    animation-name: up;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    overflow:hidden;
+}
+
+@keyframes slide-down {
+    0% {transform: translate3d(0,-100%,0);animation-timing-function: ease-in; opacity: 0;}
+    100% {transform: none;opacity:1;}
+}
+
+@keyframes down{
+    0% {max-height: 0;animation-timing-function: linear;}
+    100% {max-height: 800px}
+}
+
+@keyframes up {
+    0% {max-height: 500px;animation-timing-function: ease-out;}
+    100% {max-height: 0px;}
 }
