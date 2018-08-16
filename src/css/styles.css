@@ -51,7 +51,7 @@ body {
     display: none;
 }
 
-.fade-down{
+.slide-down{
     animation-name: down;
     animation-duration: .7s;
     animation-fill-mode: forwards;

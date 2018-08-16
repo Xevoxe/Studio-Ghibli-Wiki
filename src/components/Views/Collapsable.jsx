@@ -27,7 +27,7 @@ class Collapsable extends Component {
     }
 
     handleClick(){
-        let className = !this.state.isVisible ? "fade-down" : "slide-up";
+        let className = !this.state.isVisible ? "slide-down" : "slide-up";
         
         this.setState({
             isVisible: !this.state.isVisible,

@@ -1,47 +1,19 @@
 import React from 'react';
-import {Fragment} from 'react';
-import CardView from './CardView';
+import GridView from '../Views/GridView';
+import logo from '../../images/logo.png';
 
 let FilmsView = (props) => {
-    console.log(props.films);
+    let headings = ["Title","Director","Producer","Released","Rating"];
     return (
-        <div className="container">
+            <React.Fragment>
+                <div className="jumbotron header">
+                    <img src={logo}></img>
+                    <h1 className="display-3">Films</h1>
+                </div>
 
-            <div className="row">
-                <div className="col">
-                    <h5>Title</h5>
-                </div>
-                <div className="col">
-                    <h5>Director</h5>
-                </div>
-                <div className="col">
-                    <h5>Producer</h5>
-                </div>
-                <div className="col">
-                    <h5>Released Date</h5>
-                </div>
-            </div>
-            {props.films.map((film) => {
-                return (
-                    <Fragment key={film.key}>
-                        <div className="row" onClick={props.onClick}>
-                            <div className="col">
-                                <p>{film.title}</p>
-                            </div>
-                            <div className="col">
-                                <p>{film.director}</p>
-                            </div>
-                            <div className="col">
-                                <p>{film.producer}</p>
-                            </div>
-                            <div className="col">
-                                <p>{film.released}</p>
-                            </div>
-                        </div>
-                    </Fragment>
-                )}
-            )}                
-        </div>
-    )
+                <GridView fields={headings} data={props.films}/>
+ 
+            </React.Fragment>
+        )
 };
 export default FilmsView;
