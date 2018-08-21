@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import CharactersView from '../Views/CharactersView';
+import React from 'react';
+import Header from '../Views/Header';
+import InfoBox from '../Container/InfoBox';
+import Table from '../Views/Table';
 import withContainer from '../Views/withContainer';
+import { ColumnHeader } from '../Views/Table';
 
-const CharacterswithContainer= () => {
-    return <CharactersWithContainer />
 
-    // componentWillMount(){
-    //     fetch("https://ghibliapi.herokuapp.com/people").catch((error) => console.log(error))
-    //     .then((characters)=> characters.json())
-    //     .then((characters) => {
-    //          let data = [];
-    //          characters.map((character) => {
-    //              let info = {
-    //                  data: {
-    //                         name: character.name,
-    //                         age: character.age,
-    //                         gender: character.gender,
-    //                         eye_color: character.eye_color,
-    //                         hair_color: character.hair_color,
-    //                  },
-    //                  id: character.id,
-    //                  species: character.species,
-    //                  films: character.films    
-    //              }
-    //              data.push(info);
-    //          })
-    //          this.setState({characters: data});
-    //     })
-    // }
-
+const Characters= (props) => {
+    return (
+    <React.Fragment>   
+        <Header title="Characters"/> 
+        <Table className="table table-striped table-hover table-responsive-sm table-dark" data={props.characters} collapsable={ExpandedContent}>
+            <ColumnHeader className="header" colkey="name">Name</ColumnHeader>
+            <ColumnHeader className="header" colkey="gender">Gender</ColumnHeader>
+            <ColumnHeader className="header" colkey="age">Age</ColumnHeader>
+            <ColumnHeader className="header" colkey="eye_color">Eye Color</ColumnHeader>
+            <ColumnHeader className="header" colkey="hair_color">Hair Color</ColumnHeader>
+        </Table>
+    </React.Fragment>)
 }
 
-const CharactersWithContainer = withContainer(
-    {reqUrl:"https://ghibliapi.herokuapp.com/people", resName:'characters'})(CharactersView)
+const ExpandedContent = (props)=>{
+    const CharacterContainer = withContainer({reqUrl: props.films[0]})(renderCharacterDetail);
+    return (
+        <CharacterContainer/>
+    )
+}
+
+const renderCharacterDetail = (props) => {
+    return <div></div>
+}
 
 
-export default CharactersWithContainer;
+
+
+
+export default Characters;

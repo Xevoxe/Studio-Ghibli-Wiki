@@ -58,13 +58,16 @@ class Collapsable extends Component {
     render() {
 
         return(
+            <React.Fragment>
             <div onClick={this.handleClick}>
                 {this.renderTrigger()}
-
-                <div className={this.state.className}>
-                    {this.renderChildren()}
-                </div>
             </div>
+
+            <div className={this.state.className}>
+                {this.renderChildren()}
+            </div>
+            </React.Fragment>
+            
         )
     }
 

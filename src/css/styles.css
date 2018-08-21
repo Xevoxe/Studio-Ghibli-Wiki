@@ -1,7 +1,7 @@
 body {
     font-family: 'Spectral', serif;
-    font-size: 16pt;
-    background-color: rgb(95, 74, 19);
+    font-size: 14pt;
+    background-color: 	 #83764e
 }
 
 .container {
@@ -19,6 +19,10 @@ body {
 
 .fixed {
    z-index: 10;
+}
+
+.characterDetail{
+    background-color: #83764e;
 }
 
 /*Data Display*/
@@ -53,7 +57,7 @@ body {
 
 .slide-down{
     animation-name: down;
-    animation-duration: .7s;
+    animation-duration: 10s;
     animation-fill-mode: forwards;
     overflow: hidden;
 }
