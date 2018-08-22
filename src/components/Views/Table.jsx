@@ -13,8 +13,7 @@ class Table extends Component {
     }
 
     handleClick(e){
-
-        let rowNum = e.currentTarget.getAttribute("data-row");
+        let rowNum = +e.currentTarget.dataset.row;
         let expandedRows = [...this.state.expanded];
         let rowFound = expandedRows.findIndex((index)=>{
             return rowNum === index;
@@ -29,11 +28,13 @@ class Table extends Component {
         this.setState({
             expanded: [...expandedRows]
         })
+        
+        console.log(`State = ${this.state.expanded.length}`);
     }
 
     isExpanded(row){
         let isOpen = this.state.expanded.find((index)=>{
-            return index == row
+            return index === row
         })
         return isOpen > -1;
     }
@@ -76,14 +77,14 @@ const RenderTable = (props)=>{
             <tbody>
                 <tr>{props.children}</tr>
                 {props.data.map((data,index)=>{
-
                     return (
                         
-                        <React.Fragment>
+                        <React.Fragment key={data.id}>
                         <tr data-row={index+1} onClick={props.onClick}>
                             {props.children.map((child,index) =>{
+                                
                                 return(
-                                    <td>
+                                    <td key={index}>
                                         {data[child.props["colkey"]]}
                                     </td>
                                 )

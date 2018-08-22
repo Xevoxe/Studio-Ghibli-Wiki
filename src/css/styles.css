@@ -1,3 +1,10 @@
+/* Utilities */
+
+.center {
+    margin:auto;
+}
+
+
 body {
     font-family: 'Spectral', serif;
     font-size: 14pt;
@@ -21,9 +28,18 @@ body {
    z-index: 10;
 }
 
-.characterDetail{
+.character-detail{
     background-color: #83764e;
+    padding:20px;
+    margin:10px;
 }
+
+.character-detail p{
+    padding:0px;
+    margin: 0px;
+}
+
+
 
 /*Data Display*/
 .fields-row {
