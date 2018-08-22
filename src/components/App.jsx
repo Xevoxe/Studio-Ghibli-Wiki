@@ -1,21 +1,31 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Characters from './Container/Characters';
-import fetchData from './Views/fetchData';
-
+import Film from './Container/Film';
+import Films from './Container/Films';
 
 class App extends Component{
 
 
 
     render(){
-        return <div className="container">
-                <CharactersContainer />
-                </div>
+        return (
+            <Router>
+                <Fragment>
+                    <Link to="/characters"></Link>
+                    <Link to="/films/:id"></Link>
+                    <Switch>
+                        <Route exact path= "/characters" component={Characters} />
+                        <Route exact path = "/films" component = {Films} />
+                        <Route exact path= "/films/:id" component={Film} />
+                    </Switch>
+                </Fragment>
+            </Router>
+        )
     }
 }
 
 
-const CharactersContainer= fetchData(
-    {reqUrl:"https://ghibliapi.herokuapp.com/people",resName:"characters"})(Characters);
+
 
 export default App;

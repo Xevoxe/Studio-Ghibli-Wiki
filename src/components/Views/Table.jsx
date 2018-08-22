@@ -13,6 +13,8 @@ class Table extends Component {
     }
 
     handleClick(e){
+        //If a onClick callback is provided prevent default functionality
+        if(!this.props.onClick){
         let rowNum = +e.currentTarget.dataset.row;
         let expandedRows = [...this.state.expanded];
         let rowFound = expandedRows.findIndex((index)=>{
@@ -28,16 +30,19 @@ class Table extends Component {
         this.setState({
             expanded: [...expandedRows]
         })
-        
-        console.log(`State = ${this.state.expanded.length}`);
+    }
     }
 
     isExpanded(row){
+
+    //Dont expand unless table is expandable
+    if(this.props.expandable){
         let isOpen = this.state.expanded.find((index)=>{
             return index === row
         })
         return isOpen > -1;
     }
+}
 
     render(){
        return  (
@@ -89,8 +94,7 @@ const RenderTable = (props)=>{
                                     </td>
                                 )
                             })}
-                        </tr>
-                        
+                        </tr>  
                         {props.isExpanded(index+1) ? <ExpandableContent hidden onClick={this.handleClick} colSpan={props.children.length} collapsable={props.collapsable(data)}                     
                          /> : null}
                         </React.Fragment>

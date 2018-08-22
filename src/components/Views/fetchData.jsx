@@ -3,17 +3,14 @@ import React, { Component } from 'react';
 const fetchData = ({reqUrl, resName}) => WrappedComponent => {
     return class FetchData extends Component {
         constructor(props) {
-            super(props);
-            console.log(props);
-            
+            super(props);         
+            //Allow the use of props to fetch data
             if(props.reqUrl){
                 reqUrl = props.reqUrl;
             }
             if(props.resName){
                 resName = props.resName;
             }
-
-
 
             this.state = ({
                 [resName]: null,
