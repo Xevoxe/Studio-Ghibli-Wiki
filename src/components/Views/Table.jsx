@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
 class Table extends Component {
     constructor(props){
@@ -15,22 +16,25 @@ class Table extends Component {
     handleClick(e){
         //If a onClick callback is provided prevent default functionality
         if(!this.props.onClick){
-        let rowNum = +e.currentTarget.dataset.row;
-        let expandedRows = [...this.state.expanded];
-        let rowFound = expandedRows.findIndex((index)=>{
-            return rowNum === index;
-        })
-        if(!this.isExpanded(rowNum)){
-            //Add the row into the expanded list so on re-render the content will display.
-            expandedRows.push(rowNum);
+            let rowNum = +e.currentTarget.dataset.row;
+            let expandedRows = [...this.state.expanded];
+            let rowFound = expandedRows.findIndex((index)=>{
+                return rowNum === index;
+            })
+            if(!this.isExpanded(rowNum)){
+                //Add the row into the expanded list so on re-render the content will display.
+                expandedRows.push(rowNum);
+            }
+            else{
+                expandedRows.splice(rowFound,1);
+            }
+            this.setState({
+                expanded: [...expandedRows]
+            })
         }
-        else{
-            expandedRows.splice(rowFound,1);
+        else {
+            this.props.onClick(e,this.props.history);
         }
-        this.setState({
-            expanded: [...expandedRows]
-        })
-    }
     }
 
     isExpanded(row){
@@ -57,7 +61,7 @@ class Table extends Component {
     }
 
 }
-export default Table;
+export default withRouter(Table);
 
 const ColumnHeader = (props) => {
     return <th className={props.className}>{props.children}</th>
@@ -85,7 +89,7 @@ const RenderTable = (props)=>{
                     return (
                         
                         <React.Fragment key={data.id}>
-                        <tr data-row={index+1} onClick={props.onClick}>
+                        <tr id={data.id} data-row={index+1} onClick={props.onClick}>
                             {props.children.map((child,index) =>{
                                 
                                 return(

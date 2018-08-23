@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../../images/logo.png';
+
 
 const Header = (props) => {
     return (
-        <div className="jumbotron header">
-            <img src={logo} alt="Ghibli Logo"></img>
-            <h1 className="display-3">{props.title}</h1>
+        <div id="jumbotron" className="jumbotron header">
+            <img className="img-fluid"src="/images/logoparade.png" alt="Ghibli Logo"></img>
+            <h1 className="display-4">{props.title}</h1>
         </div>
     )
 } 

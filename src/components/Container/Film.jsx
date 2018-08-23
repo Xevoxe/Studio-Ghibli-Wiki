@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import fetchData from '../Views/fetchData';
 import Header from '../Views/Header';
+import Navigation from '../Container/Navigation';
 
 const Film = (props)=> {
         let reqUrl = `https://ghibliapi.herokuapp.com/films/${props.match.params.id}`
@@ -10,12 +11,11 @@ const Film = (props)=> {
 export default Film;
 
 const renderFilm = (props)=>{
-    console.log(props);
     return (
-        <div className="container">
+        <div id="container" className="container">
             <Header title={props.film.title}></Header>
-
-            <div className="card w-75 center">
+            <div className="card card-custom w-75 margin-auto">
+            <Navigation style="light"/>
                 <div className="card-body">
                     <h3 className="card-title">Synopsis</h3>
                     <p className="card-text">{props.film.description}</p>
